@@ -1,12 +1,15 @@
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom'
-import './App.css'
-import Navbar from './components/Navbar'
-import About from './pages/About'
-import Home from './pages/Home'
+import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import './App.css';
+import Navbar from './components/Navbar';
+import About from './pages/About';
+import Home from './pages/Home';
+
+const isProduction = import.meta.env.MODE === 'production';
+const basename = isProduction ? '/test-google-map-api' : '/';
 
 function App() {
   return (
-    <Router>
+    <Router basename={basename}>
       <div className="min-h-screen bg-gray-100 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         <Navbar />
         <main className="container mx-auto py-4">
@@ -17,7 +20,7 @@ function App() {
         </main>
       </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
